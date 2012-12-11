@@ -37,11 +37,20 @@ $items = $p->getItems();     // gets news items
 <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
         <div class="item active">
-                <img src="<?php echo $items[0]["book_large_image_url"];?>" alt="">
-        </div>
-        <?php
+                <?php 
+                $img = $items[0]["book_large_image_url"];
+                if (preg_match("/nocover/i", $img)) {
+                    continue;
+                } else { 
+                    print "<img src=\"" . $img . "\" alt=\"\"></div>";
+                }
         foreach (array_slice($items,1) as $i) {
-            print "<div class=\"item\"><img src=\"" . $i["book_large_image_url"] . "\" alt=\"\"></div>";
+            $img = $i["book_large_image_url"];
+            if (preg_match("/nocover/i", $img)) {
+                continue;
+            } else { 
+                print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\"></div>";
+            }
         }
         ?>
     </div>
