@@ -1,0 +1,40 @@
+.carousel {
+position: relative;
+margin-bottom: 0;
+padding-bottom: 0;
+width: 100%;
+margin-left:auto;
+margin-right:auto;
+}
+
+.carousel-inner {
+overflow: hidden;
+height: 100%;
+position: relative;
+/*height: 330px;*/
+}
+
+.item a img {
+width: auto 9;
+height: 100%;
+vertical-align: middle;
+border: 1px;
+-ms-interpolation-mode: bicubic;
+}
+
+.carousel-caption { 
+  position: relative;
+  background: white;
+  /*adjust the bottom padding higer if the caption is being clipped*/
+  padding:1px 1px 25px 1px;
+}
+
+.carousel-caption p {
+  color: #004990;
+  line-height: 15px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: smaller;
+  padding:1px 1px 20px 1px;
+}
+
