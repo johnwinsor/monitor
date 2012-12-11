@@ -37,11 +37,11 @@ $items = $p->getItems();     // gets news items
 <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
         <div class="item active">
-                <a href="http://library.mills.edu/search/i?SEARCH=<?php echo $items[0]["isbn"];?>&sortdropdown=-&searchscope=6" target="_parent"><img src="<?php echo $items[0]["book_large_image_url"];?>" alt=""></a>
+                <img src="<?php echo $items[0]["book_large_image_url"];?>" alt="">
         </div>
         <?php
         foreach (array_slice($items,1) as $i) {
-            print "<div class=\"item\"><a href=\"http://library.mills.edu/search/i?SEARCH=" . $i["isbn"] . "&sortdropdown=-&searchscope=6\" target=\"_parent\"><img src=\"" . $i["book_large_image_url"] . "\" alt=\"\"></a></div>";
+            print "<div class=\"item\"><img src=\"" . $i["book_large_image_url"] . "\" alt=\"\"></div>";
         }
         ?>
     </div>

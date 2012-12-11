@@ -10,13 +10,13 @@ margin-right:auto;
 .carousel-inner {
 overflow: hidden;
 height: 750px;
+width: 1080px;
 position: relative;
-width: 50%;
 margin: 0px auto;
 /*height: 330px;*/
 }
 
-.item a img {
+.item img {
 width: auto 9;
 height: 100%;
 vertical-align: middle;
