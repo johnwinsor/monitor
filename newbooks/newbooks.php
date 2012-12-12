@@ -7,10 +7,12 @@ require "PGFeed.php";
 $p = new PGFeed;
 $p->setOptions(0,30,0,NULL);
 
+// http://exene.mills.edu/monitor/newbooks/newbooks.php?shelf=history-new-books
 
-$source="http://www.goodreads.com/review/list_rss/14996177?";
-$shelf= $_GET["shelf"];
-$feed = $source . "shelf=" . $shelf;
+$source="http://www.goodreads.com/review/list_rss/14996177";
+// $shelf= $_GET["shelf"];
+$shelf="history-new-books";
+$feed = $source . "?shelf=" . $shelf;
 //print $feed;
 $p->parse($feed);
 $channel = $p->getChannel();
@@ -24,18 +26,21 @@ $items = $p->getItems();     // gets news items
     <meta charset="utf-8">
 
 <!-- Le styles -->
-    <!-- <link href="css/bootstrap.css" rel="stylesheet">
+   <!-- <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet"> -->
+  
+ 
     <style>
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   margin: 0px;
-  height: 800px;
+  height: 700px;
+  background-color: black;
 }
 
 .carousel {
-height: 800px;
+height: 700px;
 position: relative;
 margin-bottom: 0;
 padding-bottom: 0;
@@ -47,9 +52,8 @@ position: relative;
 margin: 0px auto;
 }
 
-/* 778 + 22 = 800 */
 .item img {
-min-height: 778px;
+min-height: 500px;
 margin: 0px auto;
 padding:10px;
 border:1px solid black;
@@ -109,8 +113,44 @@ background:white;
   left: 100%;
 }
 
+.carousel-caption { 
+  position: relative;
+  padding:1px 1px 1px 1px;
+  color: white;
+  margin-left:auto;
+  margin-right:auto;
+  width:650px;
+}
 
-    </style>
+.carousel-caption h2,
+.carousel-caption p {
+  line-height: 30px;
+  font-style: italic;
+  width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  font-weight: normal;
+}
+
+.bookauthor {
+  position: relative;
+  padding:1px 1px 1px 1px;
+  color: white;
+  margin-left:auto;
+  margin-right:auto;
+  width:600px;
+  line-height: 15px;
+  text-align: right;
+}
+
+.subjectheading{
+   text-align:center;
+  color: white;
+
+}
+
+</style>
 
 
 
@@ -120,23 +160,28 @@ background:white;
     <![endif]-->
 </head>
 <body>
-
+<div class="subjectheading"><h2>New Books in History</h2></div>
 <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
-        <div class="item active">
-                <?php 
-                $img = $items[0]["book_large_image_url"];
-                if (preg_match("/nocover/i", $img)) {
-                    continue;
-                } else { 
-                    print "<img src=\"" . $img . "\" alt=\"\"></div>";
-                }
+    <?php 
+    $img = $items[0]["book_large_image_url"];
+    if (preg_match("/nocover/i", $img)) {
+        continue;
+    } else { 
+        print " <div class=\"item active\"><img src=\"" . $img . "\" alt=\"\">";
+        print "<div class=\"carousel-caption\"><h2>" . $items[0]["title"] . "</h2></div>";
+        print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
+        print "</div>";
+    }
         foreach (array_slice($items,1) as $i) {
             $img = $i["book_large_image_url"];
             if (preg_match("/nocover/i", $img)) {
                 continue;
             } else { 
-                print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\"></div>";
+                print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\">";
+                print "<div class=\"carousel-caption\"><h2>" . $i["title"] . "</h2></div>";
+                print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
+                print "</div>";
             }
         }
         ?>
