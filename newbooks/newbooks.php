@@ -30,11 +30,12 @@ $items = $p->getItems();     // gets news items
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  margin: 0px;
+  height: 800px;
 }
 
 .carousel {
-/* 778 + 22 = 800 */
-height: 778px;
+height: 800px;
 position: relative;
 margin-bottom: 0;
 padding-bottom: 0;
@@ -46,8 +47,9 @@ position: relative;
 margin: 0px auto;
 }
 
+/* 778 + 22 = 800 */
 .item img {
-min-height: 100%;
+min-height: 778px;
 margin: 0px auto;
 padding:10px;
 border:1px solid black;
@@ -57,7 +59,6 @@ background:white;
 
 .carousel {
   position: relative;
-  margin-bottom: 20px;
   line-height: 1;
 }
 .carousel-inner {
