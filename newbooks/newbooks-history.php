@@ -1,9 +1,10 @@
 <?php 
 
-// ini_set('display_errors','On');
-// error_reporting(E_ALL);
+ini_set('display_errors','On');
+error_reporting(E_ALL);
 
 require "PGFeed.php";
+require "simple_html_dom.php";
 $p = new PGFeed;
 $p->setOptions(0,30,0,NULL);
 
@@ -163,11 +164,24 @@ background:white;
 <div class="subjectheading"><h2>New Books in History</h2></div>
 <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
-    <?php 
+    <?php
+
+    function getCall($isbn) {
+      $baseurl="http://library.mills.edu/search/i";
+      $queryurl=$baseurl.$isbn;
+      $html = file_get_html($queryurl);
+      //print $html;
+      //$result=$isbn;
+      //return $result;
+    }
+
     $img = $items[0]["book_large_image_url"];
     if (preg_match("/nocover/i", $img)) {
         continue;
     } else { 
+        $isbn=$items[0]["isbn"];
+        // print $isbn;
+        // $callno=getCall($isbn);
         print " <div class=\"item active\"><img src=\"" . $img . "\" alt=\"\">";
         print "<div class=\"carousel-caption\"><h2>" . $items[0]["title"] . "</h2></div>";
         print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
@@ -178,10 +192,13 @@ background:white;
             if (preg_match("/nocover/i", $img)) {
                 continue;
             } else { 
+                $isbn=$i["isbn"];
                 print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\">";
                 print "<div class=\"carousel-caption\"><h2>" . $i["title"] . "</h2></div>";
                 print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
                 print "</div>";
+
+                // getCall($isbn);
             }
         }
         ?>
