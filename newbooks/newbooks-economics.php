@@ -1,13 +1,11 @@
 <?php 
 
-// ini_set('display_errors','On');
-// error_reporting(E_ALL);
+ini_set('display_errors','On');
+error_reporting(E_ALL);
 
-require "PGFeed.php";
+require "../../includes/PGFeed/PGFeed.php";
 $p = new PGFeed;
 $p->setOptions(0,30,0,NULL);
-
-// http://exene.mills.edu/monitor/newbooks/newbooks.php?shelf=history-new-books
 
 $source="http://www.goodreads.com/review/list_rss/14996177";
 // $shelf= $_GET["shelf"];
@@ -165,19 +163,15 @@ background:white;
     <div class="carousel-inner">
     <?php 
     $img = $items[0]["book_large_image_url"];
-    if (preg_match("/nocover/i", $img)) {
-        continue;
-    } else { 
+    if (!preg_match("/nocover/i", $img)) {
         print " <div class=\"item active\"><img src=\"" . $img . "\" alt=\"\">";
         print "<div class=\"carousel-caption\"><h2>" . $items[0]["title"] . "</h2></div>";
-        print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
+        print "<div class=\"bookauthor\">by " . $items[0]["author_name"] . "</div>";
         print "</div>";
     }
         foreach (array_slice($items,1) as $i) {
             $img = $i["book_large_image_url"];
-            if (preg_match("/nocover/i", $img)) {
-                continue;
-            } else { 
+            if (!preg_match("/nocover/i", $img)) {
                 print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\">";
                 print "<div class=\"carousel-caption\"><h2>" . $i["title"] . "</h2></div>";
                 print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
