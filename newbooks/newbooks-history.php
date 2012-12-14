@@ -1,7 +1,7 @@
 <?php 
 ini_set('error_reporting', E_ALL);
 
-require "../../includes/PGFeed/PGFeed.php";
+require "inc/pgfeed/PGFeed.php";
 
 $source="http://www.goodreads.com/review/list_rss/14996177";
 $shelf="history-new-books";
@@ -24,7 +24,7 @@ $items = $p->getItems();     // gets news items
     <link href="css/custom.css" rel="stylesheet"> -->
   
  
-    <style>
+<style>
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;

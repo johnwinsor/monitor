@@ -3,7 +3,7 @@
 // ini_set('display_errors','On');
 // error_reporting(E_ALL);
 
-require "../../includes/PGFeed/PGFeed.php";
+require "inc/pgfeed/PGFeed.php";
 $p = new PGFeed;
 $p->setOptions(0,30,0,NULL);
 
