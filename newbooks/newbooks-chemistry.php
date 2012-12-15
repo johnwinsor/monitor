@@ -169,6 +169,7 @@ background:white;
         print " <div class=\"item active\"><img src=\"" . $img . "\" alt=\"\">";
         print "<div class=\"carousel-caption\"><h2>" . $items[0]["title"] . "</h2></div>";
         print "<div class=\"bookauthor\">by " . $items[0]["author_name"] . "</div>";
+        print "<div class=\"bookauthor\">Call No.: " . $items[0]["user_review"] . "</div>";
         print "</div>";
     }
         foreach (array_slice($items,1) as $i) {
@@ -177,6 +178,7 @@ background:white;
                 print "<div class=\"item\"><img src=\"" . $img . "\" alt=\"\">";
                 print "<div class=\"carousel-caption\"><h2>" . $i["title"] . "</h2></div>";
                 print "<div class=\"bookauthor\">by " . $i["author_name"] . "</div>";
+                print "<div class=\"bookauthor\">Call No.: " . $i["user_review"] . "</div>";
                 print "</div>";
             }
         }
