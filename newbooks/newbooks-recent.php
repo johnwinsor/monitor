@@ -12,6 +12,8 @@ $p->setOptions(0,30,1,NULL);
 $p->parse($feed);
 $channel = $p->getChannel();
 $items = $p->getItems();     // gets news items
+shuffle($items);
+
 
 ?>
 <!DOCTYPE html>
