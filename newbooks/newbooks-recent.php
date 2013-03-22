@@ -8,7 +8,7 @@ $shelf="currently-reading";
 $feed = $source . "?shelf=" . $shelf;
 
 $p = new PGFeed;
-$p->setOptions(0,30,1,NULL);
+$p->setOptions(0,200,1,NULL);
 $p->parse($feed);
 $channel = $p->getChannel();
 $items = $p->getItems();     // gets news items
